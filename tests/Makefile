@@ -1,8 +1,12 @@
-all:
+all:	tests.out example.out
+
+tests.out:	tests.c
 	gcc -Wall -fprofile-arcs -ftest-coverage  tests.c ../src/pubsub.c -I../src -lpthread -o tests.out
+
 clean:
 	rm *.out
 	rm *.gc*
+
 coverage: all
 	@echo '--------------------------------'
 	./tests.out
@@ -10,6 +14,7 @@ coverage: all
 	gcov tests.c
 	@echo '--------------------------------'
 	gcov pubsub.c
-example:
+
+example.out:	example.c
 	gcc -Wall example.c ../src/pubsub.c -I../src -lpthread -o example.out
 	

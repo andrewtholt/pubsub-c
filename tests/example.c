@@ -19,7 +19,7 @@ static void *subscriber_thread(void *v) {
 			if (IS_INT(msg)) {
 				if (msg->rtopic != NULL) {
 					PUB_INT(msg->rtopic, msg->int_val + 1);
-					printf("Thread: recv int: %ld, sending: %ld\n", msg->int_val, msg->int_val + 1);
+					printf("Thread: Topic %s recv int: %ld, sending: %ld\n", msg->topic, msg->int_val, msg->int_val + 1);
 				} else {
 					printf("Thread: recv int: %ld\n", msg->int_val);
 				}
