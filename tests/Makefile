@@ -1,20 +1,20 @@
-all:	tests.out example.out
+BINS=tests example
+all:	$(BINS)
 
-tests.out:	tests.c
-	gcc -Wall -fprofile-arcs -ftest-coverage  tests.c ../src/pubsub.c -I../src -lpthread -o tests.out
+tests:	tests.c
+	gcc -Wall -fprofile-arcs -ftest-coverage  tests.c ../src/pubsub.c -I../src -lpthread -o tests
 
 clean:
-	rm *.out
-	rm *.gc*
+	rm -f $(BINS) *.o *.gcov
 
 coverage: all
 	@echo '--------------------------------'
-	./tests.out
+	./tests
 	@echo '--------------------------------'
 	gcov tests.c
 	@echo '--------------------------------'
 	gcov pubsub.c
 
-example.out:	example.c
-	gcc -Wall example.c ../src/pubsub.c -I../src -lpthread -o example.out
+example:	example.c
+	gcc -Wall example.c ../src/pubsub.c -I../src -lpthread -o example
 	
