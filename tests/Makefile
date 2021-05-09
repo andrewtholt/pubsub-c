@@ -2,7 +2,7 @@ BINS=tests example
 all:	$(BINS)
 
 tests:	tests.c
-	gcc -Wall -fprofile-arcs -ftest-coverage  tests.c ../src/pubsub.c -I../src -lpthread -o tests
+	gcc -g -Wall -fprofile-arcs -ftest-coverage  tests.c ../src/pubsub.c -I../src -lpthread -o tests
 
 clean:
 	rm -f $(BINS) *.o *.gcov
@@ -16,5 +16,5 @@ coverage: all
 	gcov pubsub.c
 
 example:	example.c
-	gcc -Wall example.c ../src/pubsub.c -I../src -lpthread -o example
+	gcc -g -Wall example.c ../src/pubsub.c -I../src -lpthread -o example
 	

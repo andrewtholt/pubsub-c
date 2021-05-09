@@ -21,12 +21,12 @@ static void *subscriber_thread(void *v) {
 					PUB_INT(msg->rtopic, msg->int_val + 1);
 					printf("Thread: Topic %s recv int: %ld, sending: %ld\n", msg->topic, msg->int_val, msg->int_val + 1);
 				} else {
-					printf("Thread: recv int: %ld\n", msg->int_val);
+					printf("Thread: Topic %s recv int: %ld\n",msg->topic, msg->int_val);
 				}
 			} else {
 				if (IS_BOOL(msg)) {
 					run = msg->bool_val;
-					printf("Thread: recv bool: %d\n", run);
+					printf("Thread: Topic %s recv bool: %d\n", msg->topic, run);
 				} else {
 					printf("Thread: MSG not int or bool\n");
 				}
