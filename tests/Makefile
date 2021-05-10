@@ -1,4 +1,4 @@
-BINS=tests example
+BINS=tests example example1
 all:	$(BINS)
 
 tests:	tests.c
@@ -18,3 +18,6 @@ coverage: all
 example:	example.c
 	gcc -g -Wall example.c ../src/pubsub.c -I../src -lpthread -o example
 	
+
+example1:	example1.c
+	gcc -g -Wall example1.c ../src/pubsub.c -I../src -lpthread -o example1
